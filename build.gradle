@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.3.7'
+}
+
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.algolia:algoliasearch:2.18.1', {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    runtime 'com.github.cliftonlabs:json-simple:3.0.2'
+    compile 'com.github.zafarkhaja:java-semver:0.9.0'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+intellij {
+    version '2018.2.2'
+}

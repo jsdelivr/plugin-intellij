@@ -1,0 +1,28 @@
+<idea-plugin url="https://github.com/jsdelivr/plugin-intellij">
+	<name>jsDelivr package search</name>
+
+	<id>com.jsdelivr.pluginintellij.JsDelivrPackageSearch</id>
+
+	<description><![CDATA[
+    Simple search and insertion of packages from <a href="https://www.jsdelivr.com">https://www.jsdelivr.com</a>
+    ]]></description>
+
+	<change-notes><![CDATA[
+		<strong>v1.0.0</strong><br>
+		Initial release.
+    ]]></change-notes>
+
+	<version>1.0.0</version>
+
+	<vendor email="dak@prospectone.io" url="https://www.jsdelivr.com">jsDelivr</vendor>
+
+	<depends>com.intellij.modules.lang</depends>
+
+	<actions>
+		<action id="com.jsdelivr.pluginintellij.JsDelivrPackageSearch" class="com.jsdelivr.pluginintellij.JsDelivrPackageSearch" text="Add jsDelivr package"
+				description="Choose and insert JsDelivr package">
+			<add-to-group group-id="EditorPopupMenu3"/>
+			<keyboard-shortcut keymap="$default" first-keystroke="alt A"/>
+		</action>
+	</actions>
+</idea-plugin>
