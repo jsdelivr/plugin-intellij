@@ -5,7 +5,7 @@ Quickly insert any npm package from [jsDelivr CDN](https://www.jsdelivr.com).
 Use a keyboard shortcut (Alt + A by default) or choose "Add jsDelivr package"
 from the context menu to bring up the search window.
 
-![](screenshots/1.gif)
+![Screenshot 1](screenshots/1.gif)
 
 ## Features
 
