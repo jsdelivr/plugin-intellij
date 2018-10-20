@@ -1,10 +1,13 @@
 package com.jsdelivr.pluginintellij.ui;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBTextField;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -26,6 +29,7 @@ public abstract class JsDelivrInput implements FocusListener {
 
 		inputField = new JBTextField();
 		inputField.addMouseListener(new JsDelivrMouseListener());
+		inputField.getDocument().addDocumentListener(new PasteListener());
 
 		list = new JsDelivrList(s -> {
 			inputComplete(s);
@@ -189,6 +193,30 @@ public abstract class JsDelivrInput implements FocusListener {
 
 			list.keyEvent(ke);
 			return false;
+		}
+	}
+
+	class PasteListener implements DocumentListener {
+		@Override
+		public void insertUpdate(DocumentEvent event) {
+			ApplicationManager.getApplication().invokeLater(() -> {
+				ApplicationManager.getApplication().runWriteAction(() -> {
+					if (inputField.getText().contains(placeholder) && inputField.getText().length() > placeholder.length()) {
+						inputField.setForeground(editor.getContentComponent().getForeground());
+						inputField.setText(inputField.getText().substring(0, event.getLength()));
+					}
+				});
+			});
+		}
+
+		@Override
+		public void removeUpdate(DocumentEvent event) {
+			// no op
+		}
+
+		@Override
+		public void changedUpdate(DocumentEvent event) {
+			// no op
 		}
 	}
 
