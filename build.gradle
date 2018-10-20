@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.intellij' version '0.3.7'
 }
 
-version '1.0.0'
+version '1.0.1'
 
 sourceCompatibility = 1.8
 

@@ -8,11 +8,14 @@
     ]]></description>
 
 	<change-notes><![CDATA[
+		<strong>v1.0.1</strong><br>
+		Fix pasting into empty input.<br><br>
+
 		<strong>v1.0.0</strong><br>
 		Initial release.
     ]]></change-notes>
 
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 
 	<vendor email="dak@prospectone.io" url="https://www.jsdelivr.com">jsDelivr</vendor>
 
