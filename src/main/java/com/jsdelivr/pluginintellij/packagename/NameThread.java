@@ -48,18 +48,18 @@ public class NameThread implements Runnable {
 				ApplicationManager.getApplication().runWriteAction(() -> {
 					synchronized (this) {
 						if (packages == null || packages.isEmpty()) {
-							jsDelivrInput.list.setEmptyText(messageNotFound);
+							JsDelivrInput.list.setEmptyText(messageNotFound);
 							jsDelivrInput.loading = false;
 							return;
 						}
 
-						jsDelivrInput.list.getDefaultModel().clear();
+						JsDelivrInput.list.getDefaultModel().clear();
 
 						for (AlgoliaPackage pkg : packages) {
-							jsDelivrInput.list.getDefaultModel().addElement(new ListNameItem(pkg.getName(), pkg.getRepository()));
+							JsDelivrInput.list.getDefaultModel().addElement(new ListNameItem(pkg.getName(), pkg.getRepository()));
 						}
 
-						jsDelivrInput.list.resetSelection();
+						JsDelivrInput.list.resetSelection();
 					}
 				});
 			});
@@ -77,8 +77,8 @@ public class NameThread implements Runnable {
 			AlgoliaPackage chosenPackage = null;
 
 			if (packages == null || packages.isEmpty()) {
-				jsDelivrInput.list.getDefaultModel().clear();
-				jsDelivrInput.list.setEmptyText(messageNotFound);
+				JsDelivrInput.list.getDefaultModel().clear();
+				JsDelivrInput.list.setEmptyText(messageNotFound);
 				jsDelivrInput.loading = false;
 				return;
 			}
@@ -90,8 +90,8 @@ public class NameThread implements Runnable {
 			}
 
 			if (chosenPackage == null) {
-				jsDelivrInput.list.getDefaultModel().clear();
-				jsDelivrInput.list.setEmptyText(messageNotFound);
+				JsDelivrInput.list.getDefaultModel().clear();
+				JsDelivrInput.list.setEmptyText(messageNotFound);
 				jsDelivrInput.loading = false;
 				return;
 			}
