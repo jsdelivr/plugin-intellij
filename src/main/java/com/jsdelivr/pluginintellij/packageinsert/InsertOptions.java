@@ -4,6 +4,7 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.jsdelivr.pluginintellij.InsertModel;
 import com.jsdelivr.pluginintellij.packagefile.FileInput;
+import com.jsdelivr.pluginintellij.ui.DefaultListItem;
 import com.jsdelivr.pluginintellij.ui.JsDelivrList;
 import com.jsdelivr.pluginintellij.ui.JsDelivrPopup;
 
@@ -30,16 +31,16 @@ public class InsertOptions {
 		this.project = project;
 
 		list = new JsDelivrList(s -> {
-			inputComplete(s);
+			inputComplete(s.toString());
 			popup.closePopup();
 			return null;
 		});
 
-		list.getDefaultModel().addElement(messageInsertUrl);
-		list.getDefaultModel().addElement(messageInsertHtml);
+		list.getDefaultModel().addElement(new DefaultListItem(messageInsertUrl));
+		list.getDefaultModel().addElement(new DefaultListItem(messageInsertHtml));
 
 		if (!generatedMin) {
-			list.getDefaultModel().addElement(messageInsertHtmlSri);
+			list.getDefaultModel().addElement(new DefaultListItem(messageInsertHtmlSri));
 		}
 
 		popup = new JsDelivrPopup(editor, ke -> {
@@ -48,7 +49,7 @@ public class InsertOptions {
 					new FileInput(editor, project, insertModel.name, insertModel.version, insertModel.file.name.replaceFirst("/", "")).setFont(font);
 					popup.closePopup();
 				} else if (ke.getKeyCode() == KeyEvent.VK_ENTER || ke.getKeyCode() == KeyEvent.VK_TAB) {
-					inputComplete(list.getSelectedItem());
+					inputComplete(list.getSelectedItem().toString());
 					popup.closePopup();
 				}
 			}

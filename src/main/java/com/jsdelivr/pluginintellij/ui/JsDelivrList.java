@@ -5,14 +5,17 @@ import com.intellij.ui.components.JBScrollPane;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.util.function.Function;
 
-public class JsDelivrList extends JBList<String> {
+public class JsDelivrList extends JBList<IJsDelivrListItem> {
 	private Font font;
 	private JBScrollPane pane;
 
-	public JsDelivrList(Function<String, Void> onItemSelected) {
+	public JsDelivrList(Function<IJsDelivrListItem, Void> onItemSelected) {
 		super(new DefaultListModel<>());
 
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -27,8 +30,8 @@ public class JsDelivrList extends JBList<String> {
 				int index = lst.locationToIndex(mouseEvent.getPoint());
 
 				if (index >= 0) {
-					Object object = lst.getModel().getElementAt(index);
-					onItemSelected.apply(object.toString());
+					IJsDelivrListItem object = (IJsDelivrListItem) lst.getModel().getElementAt(index);
+					onItemSelected.apply(object);
 				}
 			}
 		});
@@ -62,9 +65,9 @@ public class JsDelivrList extends JBList<String> {
 		return pane;
 	}
 
-	public String getSelectedItem() {
+	public IJsDelivrListItem getSelectedItem() {
 		if (getSelectedValue() == null) {
-			return "";
+			return null;
 		}
 
 		return getSelectedValue();
@@ -88,7 +91,7 @@ public class JsDelivrList extends JBList<String> {
 		ensureIndexIsVisible(getSelectedIndex());
 	}
 
-	public DefaultListModel<String> getDefaultModel() {
-		return (DefaultListModel<String>) getModel();
+	public DefaultListModel<IJsDelivrListItem> getDefaultModel() {
+		return (DefaultListModel<IJsDelivrListItem>) getModel();
 	}
 }

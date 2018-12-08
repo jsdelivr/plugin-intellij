@@ -6,6 +6,7 @@ import com.intellij.openapi.project.Project;
 import com.jsdelivr.pluginintellij.packagefile.FileInput;
 import com.jsdelivr.pluginintellij.packagename.NameInput;
 import com.jsdelivr.pluginintellij.packagename.remotetypes.AlgoliaPackage;
+import com.jsdelivr.pluginintellij.ui.DefaultListItem;
 import com.jsdelivr.pluginintellij.ui.JsDelivrInput;
 
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class VersionInput extends JsDelivrInput {
 		this.list.getDefaultModel().clear();
 
 		for (Version version : list) {
-			this.list.getDefaultModel().addElement(version.toString());
+			this.list.getDefaultModel().addElement(new DefaultListItem(version.toString()));
 		}
 	}
 

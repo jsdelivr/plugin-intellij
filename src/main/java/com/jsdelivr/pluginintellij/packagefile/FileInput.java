@@ -8,6 +8,7 @@ import com.jsdelivr.pluginintellij.packagefile.remotetypes.ApiPackageFiles;
 import com.jsdelivr.pluginintellij.packageinsert.InsertOptions;
 import com.jsdelivr.pluginintellij.packagename.AlgoliaSearch;
 import com.jsdelivr.pluginintellij.packagename.NameThread;
+import com.jsdelivr.pluginintellij.ui.DefaultListItem;
 import com.jsdelivr.pluginintellij.ui.JsDelivrInput;
 
 import java.util.List;
@@ -69,14 +70,14 @@ public class FileInput extends JsDelivrInput {
 
 			if ((file.contains(text) || file.contains(woMin)) && (file.endsWith(".js") || file.endsWith(".css"))) {
 				if (file.contains(text) && !list.getDefaultModel().contains(file.replaceFirst("/", ""))) {
-					list.getDefaultModel().addElement(file.replaceFirst("/", ""));
+					list.getDefaultModel().addElement(new DefaultListItem(file.replaceFirst("/", "")));
 				}
 
 				String tmp = file.replaceFirst("/", "");
 
 				if (tmp.endsWith(".min.js") || tmp.endsWith(".min.css")) {
 					if (!list.getDefaultModel().contains(tmp)) {
-						list.getDefaultModel().addElement(tmp);
+						list.getDefaultModel().addElement(new DefaultListItem(tmp));
 					}
 				}
 
@@ -84,7 +85,7 @@ public class FileInput extends JsDelivrInput {
 					tmp = tmp.substring(0, tmp.lastIndexOf(".js")) + ".min.js";
 
 					if (!list.getDefaultModel().contains(tmp)) {
-						list.getDefaultModel().addElement(tmp);
+						list.getDefaultModel().addElement(new DefaultListItem(tmp));
 					}
 				}
 
@@ -92,7 +93,7 @@ public class FileInput extends JsDelivrInput {
 					tmp = tmp.substring(0, tmp.lastIndexOf(".css")) + ".min.css";
 
 					if (!list.getDefaultModel().contains(tmp)) {
-						list.getDefaultModel().addElement(tmp);
+						list.getDefaultModel().addElement(new DefaultListItem(tmp));
 					}
 				}
 			}

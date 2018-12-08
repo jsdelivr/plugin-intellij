@@ -1,24 +1,32 @@
 package com.jsdelivr.pluginintellij.ui;
 
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.keymap.KeymapUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBTextField;
+import com.jsdelivr.pluginintellij.packagename.ListNameItem;
 
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.Desktop;
 import java.awt.event.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public abstract class JsDelivrInput implements FocusListener {
 	public String placeholder;
 	public JBTextField inputField;
 	public Editor editor;
 	public Project project;
-	public JsDelivrList list;
 	public JsDelivrPopup popup;
 	public boolean loading = false;
+	public static JsDelivrList list;
 
 	private Font font;
 
@@ -32,7 +40,7 @@ public abstract class JsDelivrInput implements FocusListener {
 		inputField.getDocument().addDocumentListener(new PasteListener());
 
 		list = new JsDelivrList(s -> {
-			inputComplete(s);
+			inputComplete(s.toString());
 			popup.closePopup();
 			return null;
 		});
@@ -66,6 +74,14 @@ public abstract class JsDelivrInput implements FocusListener {
 	 * Go to previous stage of input process.
 	 */
 	protected abstract void previousInput();
+
+	/**
+	 * Support custom key event actions.
+	 * @param keyEvent key event
+	 */
+	protected void onKeyEvent(KeyEvent keyEvent) {
+
+	}
 
 	@Override
 	public void focusLost(FocusEvent event) {
@@ -167,7 +183,7 @@ public abstract class JsDelivrInput implements FocusListener {
 						return false;
 					}
 
-					if (inputComplete(list.getSelectedItem()) && !loading) {
+					if (inputComplete(list.getSelectedItem().toString()) && !loading) {
 						popup.closePopup();
 					}
 				} else if (ke.getKeyCode() == KeyEvent.VK_SHIFT) {
@@ -191,6 +207,7 @@ public abstract class JsDelivrInput implements FocusListener {
 				}
 			}
 
+			onKeyEvent(ke);
 			list.keyEvent(ke);
 			return false;
 		}

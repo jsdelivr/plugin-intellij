@@ -56,7 +56,7 @@ public class NameThread implements Runnable {
 						jsDelivrInput.list.getDefaultModel().clear();
 
 						for (AlgoliaPackage pkg : packages) {
-							jsDelivrInput.list.getDefaultModel().addElement(pkg.getName());
+							jsDelivrInput.list.getDefaultModel().addElement(new ListNameItem(pkg.getName(), pkg.getRepository()));
 						}
 
 						jsDelivrInput.list.resetSelection();

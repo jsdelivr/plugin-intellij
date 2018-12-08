@@ -22,10 +22,25 @@
 	<depends>com.intellij.modules.lang</depends>
 
 	<actions>
-		<action id="com.jsdelivr.pluginintellij.JsDelivrPackageSearch" class="com.jsdelivr.pluginintellij.JsDelivrPackageSearch" text="Add jsDelivr package"
+		<action id="com.jsdelivr.pluginintellij.JsDelivrPackageSearch"
+				class="com.jsdelivr.pluginintellij.JsDelivrPackageSearch" text="Add jsDelivr package"
 				description="Choose and insert JsDelivr package">
 			<add-to-group group-id="EditorPopupMenu3"/>
 			<keyboard-shortcut keymap="$default" first-keystroke="alt A"/>
+		</action>
+		<action id="com.jsdelivr.pluginintellij.actions.OpenJsDelivr"
+				class="com.jsdelivr.pluginintellij.actions.OpenJsDelivr" text="Open jsDelivr page"
+				description="Opens jsDelivr page of the selected package">
+			<keyboard-shortcut keymap="$default" first-keystroke="F1"/>
+		</action>
+		<action id="com.jsdelivr.pluginintellij.actions.OpenNpm" class="com.jsdelivr.pluginintellij.actions.OpenNpm"
+				text="Open npm page" description="Open npm page of the selected package">
+			<keyboard-shortcut keymap="$default" first-keystroke="F2"/>
+		</action>
+		<action id="com.jsdelivr.pluginintellij.actions.OpenGithub"
+				class="com.jsdelivr.pluginintellij.actions.OpenGithub" text="Open Github repository"
+				description="Open Github repository of the selected package">
+			<keyboard-shortcut keymap="$default" first-keystroke="F3"/>
 		</action>
 	</actions>
 </idea-plugin>

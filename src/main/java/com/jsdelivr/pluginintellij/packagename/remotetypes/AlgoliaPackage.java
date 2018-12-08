@@ -8,6 +8,7 @@ public class AlgoliaPackage {
 	private String name;
 	private List<String> versions;
 	private String version;
+	private AlgoliaRepository repository;
 
 	public String getName() {
 		return name;
@@ -18,12 +19,12 @@ public class AlgoliaPackage {
 		return this;
 	}
 
-	public List<String> getVersions() {
-		return versions;
+	public AlgoliaRepository getRepository() {
+		return repository;
 	}
 
-	public AlgoliaPackage setVersions(Map<String, String> versions) {
-		this.versions = new ArrayList<>(versions.keySet());
+	public AlgoliaPackage setRepository(AlgoliaRepository repository) {
+		this.repository = repository;
 		return this;
 	}
 
@@ -33,6 +34,15 @@ public class AlgoliaPackage {
 
 	public AlgoliaPackage setVersion(String version) {
 		this.version = version;
+		return this;
+	}
+
+	public List<String> getVersions() {
+		return versions;
+	}
+
+	public AlgoliaPackage setVersions(Map<String, String> versions) {
+		this.versions = new ArrayList<>(versions.keySet());
 		return this;
 	}
 }
