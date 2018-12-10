@@ -2,6 +2,7 @@ package com.jsdelivr.pluginintellij.packagefile;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.jsdelivr.pluginintellij.packagefile.remotetypes.ApiPackageFile;
+import com.jsdelivr.pluginintellij.ui.JsDelivrInput;
 
 import java.util.ArrayList;
 
@@ -32,17 +33,17 @@ public class FileThread implements Runnable {
 
 					if (fileInput.pkgFile == null) {
 						fileInput.updateAutocomplete(fileInput.inputField.getText().equals(fileInput.placeholder) ? "" : fileInput.inputField.getText());
-						fileInput.list.resetSelection();
+						JsDelivrInput.list.resetSelection();
 					} else {
 						fileInput.inputField.setText(fileInput.pkgFile);
 						fileInput.inputField.setForeground(fileInput.editor.getContentComponent().getForeground());
 						fileInput.updateAutocomplete(fileInput.pkgFile);
-						fileInput.list.resetSelection();
+						JsDelivrInput.list.resetSelection();
 					}
 				} else if (PackageFiles.error != null) {
-					fileInput.list.setEmptyText(PackageFiles.error.message);
+					JsDelivrInput.list.setEmptyText(PackageFiles.error.message);
 				} else {
-					fileInput.list.setEmptyText("Package not found");
+					JsDelivrInput.list.setEmptyText("Package not found");
 				}
 			});
 		});

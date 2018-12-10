@@ -51,10 +51,10 @@ public class VersionInput extends JsDelivrInput {
 	protected void updateAutocomplete(String text) {
 		List<Version> list = new ArrayList<>();
 
-		this.list.setEmptyText(messageLoading);
+		JsDelivrInput.list.setEmptyText(messageLoading);
 
 		if (pkg.getVersions() == null) {
-			this.list.setEmptyText(messageNotFound);
+			JsDelivrInput.list.setEmptyText(messageNotFound);
 		}
 
 		for (String version : pkg.getVersions()) {
@@ -64,14 +64,14 @@ public class VersionInput extends JsDelivrInput {
 		}
 
 		if (list.isEmpty()) {
-			this.list.setEmptyText(messageNotFound);
+			JsDelivrInput.list.setEmptyText(messageNotFound);
 		}
 
 		list.sort(versionAscending);
-		this.list.getDefaultModel().clear();
+		JsDelivrInput.list.getDefaultModel().clear();
 
 		for (Version version : list) {
-			this.list.getDefaultModel().addElement(new DefaultListItem(version.toString()));
+			JsDelivrInput.list.getDefaultModel().addElement(new DefaultListItem(version.toString()));
 		}
 	}
 
@@ -81,7 +81,7 @@ public class VersionInput extends JsDelivrInput {
 		list.setEmptyText(messageLoading);
 
 		if (!pkg.getVersions().contains(text)) {
-			this.list.setEmptyText(messageNotFound);
+			list.setEmptyText(messageNotFound);
 			return false;
 		}
 

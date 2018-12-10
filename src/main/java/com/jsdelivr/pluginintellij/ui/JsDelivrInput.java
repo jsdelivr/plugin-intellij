@@ -1,23 +1,15 @@
 package com.jsdelivr.pluginintellij.ui;
 
-import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.keymap.KeymapUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBTextField;
-import com.jsdelivr.pluginintellij.packagename.ListNameItem;
 
-import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.Desktop;
 import java.awt.event.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 public abstract class JsDelivrInput implements FocusListener {
 	public String placeholder;
@@ -77,6 +69,7 @@ public abstract class JsDelivrInput implements FocusListener {
 
 	/**
 	 * Support custom key event actions.
+	 *
 	 * @param keyEvent key event
 	 */
 	protected void onKeyEvent(KeyEvent keyEvent) {
