@@ -138,10 +138,13 @@ public abstract class JsDelivrInput implements FocusListener {
 			}
 
 			if (ke.getID() == KeyEvent.KEY_PRESSED) {
+				// input was empty
 				if (inputField.getText().equals(placeholder)) {
+					// user pressed a symbol, input field will get rid of placeholder
 					if (isAllowedWhenInputEmpty(ke) && !mustResetPlaceholder(ke)) {
 						inputField.setForeground(editor.getContentComponent().getForeground());
 						inputField.setText("");
+					// user pressed an action key, must reset placeholder so it doesn't flicker
 					} else {
 						inputField.setText(placeholder);
 						inputField.setCaretPosition(0);
@@ -149,6 +152,7 @@ public abstract class JsDelivrInput implements FocusListener {
 					}
 				}
 
+				// update shift + tab combo state
 				if (ke.getKeyCode() == KeyEvent.VK_SHIFT) {
 					shift = true;
 					ke.consume();
@@ -159,6 +163,7 @@ public abstract class JsDelivrInput implements FocusListener {
 			}
 
 			if (ke.getID() == KeyEvent.KEY_RELEASED) {
+				// shift + tab was pressed, going to previous input
 				if ((ke.getKeyCode() == KeyEvent.VK_TAB && (shift || ke.isShiftDown())) || (ke.getKeyCode() == KeyEvent.VK_SHIFT && tab)) {
 					shift = ke.getKeyCode() == KeyEvent.VK_TAB;
 					tab = ke.getKeyCode() == KeyEvent.VK_SHIFT;
@@ -168,10 +173,12 @@ public abstract class JsDelivrInput implements FocusListener {
 					if (!loading) {
 						previousInput();
 					}
+				// released tab or enter, going to next input
 				} else if (ke.getKeyCode() == KeyEvent.VK_ENTER || ke.getKeyCode() == KeyEvent.VK_TAB) {
 					tab = tab && ke.getKeyCode() != KeyEvent.VK_TAB;
 					ke.consume();
 
+					// if nothing was selected, reset the placeholder to avoid flickering
 					if (list.getDefaultModel().isEmpty()) {
 						inputField.setText(placeholder);
 						inputField.setForeground(JBColor.GRAY);
@@ -179,13 +186,17 @@ public abstract class JsDelivrInput implements FocusListener {
 						return false;
 					}
 
+					// go to next input if list is not loading
 					if (inputComplete(list.getSelectedItem().toString()) && !loading) {
 						popup.closePopup();
 					}
+				// updating shift state
 				} else if (ke.getKeyCode() == KeyEvent.VK_SHIFT) {
 					shift = false;
 					ke.consume();
+				// if a key that doesn't suit any of the above was released (except up & down arrow keys)
 				} else if (ke.getKeyCode() != KeyEvent.VK_UP && ke.getKeyCode() != KeyEvent.VK_DOWN) {
+					// update input field (for example if backspace was pressed and no text is left in input)
 					if (inputField.getText().equals("")) {
 						inputField.setForeground(JBColor.GRAY);
 						inputField.setText(placeholder);
@@ -194,6 +205,7 @@ public abstract class JsDelivrInput implements FocusListener {
 						list.resetSelection();
 						lastUpdate = "";
 					} else if ((!mustResetPlaceholder(ke) || ke.getKeyCode() == KeyEvent.VK_BACK_SPACE || ke.getKeyCode() == KeyEvent.VK_DELETE) && !inputField.getText().equals(placeholder)) {
+						// if input changed, update list
 						if (!inputField.getText().equals(lastUpdate)) {
 							lastUpdate = inputField.getText();
 							updateAutocomplete(inputField.getText());
@@ -203,8 +215,12 @@ public abstract class JsDelivrInput implements FocusListener {
 				}
 			}
 
+			// run custom handlers which may be implemented in subclasses
 			onKeyEvent(ke);
+
+			// pass up & down arrow keys to list
 			list.keyEvent(ke);
+
 			return false;
 		}
 	}
