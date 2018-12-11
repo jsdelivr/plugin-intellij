@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.intellij' version '0.3.7'
 }
 
-version '1.0.1'
+version '1.0.2'
 
 sourceCompatibility = 1.8
 
@@ -21,5 +21,5 @@ dependencies {
 }
 
 intellij {
-    version '2018.2.2'
+    version '2018.3'
 }
