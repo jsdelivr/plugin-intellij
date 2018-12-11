@@ -16,3 +16,7 @@ and search for `jsDelivr`.
 
  - Insert just the URL, HTML code, or HTML + SRI.
  - Offers [minified versions](https://www.jsdelivr.com/features#minify) of all CSS/JS files.
+ - Quick open (press in the search results list):
+    - F1 - jsDelivr package page
+    - F2 - npm package page
+    - F3 - GitHub page
