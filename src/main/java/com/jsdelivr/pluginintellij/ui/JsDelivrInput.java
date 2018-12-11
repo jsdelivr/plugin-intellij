@@ -110,6 +110,7 @@ public abstract class JsDelivrInput implements FocusListener {
 
 		private boolean isAllowedWhenListEmpty(KeyEvent event) {
 			return event.getKeyCode() != KeyEvent.VK_ENTER
+				&& event.getKeyCode() != KeyEvent.VK_TAB
 				&& event.getKeyCode() != KeyEvent.VK_UP
 				&& event.getKeyCode() != KeyEvent.VK_DOWN;
 		}
@@ -144,6 +145,7 @@ public abstract class JsDelivrInput implements FocusListener {
 					} else {
 						inputField.setText(placeholder);
 						inputField.setCaretPosition(0);
+						inputField.setForeground(JBColor.GRAY);
 					}
 				}
 
@@ -172,6 +174,7 @@ public abstract class JsDelivrInput implements FocusListener {
 
 					if (list.getDefaultModel().isEmpty()) {
 						inputField.setText(placeholder);
+						inputField.setForeground(JBColor.GRAY);
 						inputField.setCaretPosition(0);
 						return false;
 					}
