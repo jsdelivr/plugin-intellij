@@ -69,14 +69,14 @@ public class FileInput extends JsDelivrInput {
 			}
 
 			if ((file.contains(text) || file.contains(woMin)) && (file.endsWith(".js") || file.endsWith(".css"))) {
-				if (file.contains(text) && !list.getDefaultModel().contains(file.replaceFirst("/", ""))) {
+				if (file.contains(text) && !list.contains(file.replaceFirst("/", ""))) {
 					list.getDefaultModel().addElement(new DefaultListItem(file.replaceFirst("/", "")));
 				}
 
 				String tmp = file.replaceFirst("/", "");
 
 				if (tmp.endsWith(".min.js") || tmp.endsWith(".min.css")) {
-					if (!list.getDefaultModel().contains(tmp)) {
+					if (!list.contains(tmp)) {
 						list.getDefaultModel().addElement(new DefaultListItem(tmp));
 					}
 				}
@@ -84,7 +84,7 @@ public class FileInput extends JsDelivrInput {
 				if (tmp.endsWith(".js") && !tmp.endsWith(".min.js")) {
 					tmp = tmp.substring(0, tmp.lastIndexOf(".js")) + ".min.js";
 
-					if (!list.getDefaultModel().contains(tmp)) {
+					if (!list.contains(tmp)) {
 						list.getDefaultModel().addElement(new DefaultListItem(tmp));
 					}
 				}
@@ -92,7 +92,7 @@ public class FileInput extends JsDelivrInput {
 				if (tmp.endsWith(".css") && !tmp.endsWith(".min.css")) {
 					tmp = tmp.substring(0, tmp.lastIndexOf(".css")) + ".min.css";
 
-					if (!list.getDefaultModel().contains(tmp)) {
+					if (!list.contains(tmp)) {
 						list.getDefaultModel().addElement(new DefaultListItem(tmp));
 					}
 				}

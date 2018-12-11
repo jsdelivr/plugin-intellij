@@ -9,7 +9,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.Collections;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class JsDelivrList extends JBList<IJsDelivrListItem> {
 	private Font font;
@@ -71,6 +73,10 @@ public class JsDelivrList extends JBList<IJsDelivrListItem> {
 		}
 
 		return getSelectedValue();
+	}
+
+	public boolean contains(String item) {
+		return Collections.list(this.getDefaultModel().elements()).stream().anyMatch(i -> i.toString().equals(item));
 	}
 
 	public void resetSelection() {
