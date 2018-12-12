@@ -8,6 +8,9 @@
     ]]></description>
 
 	<change-notes><![CDATA[
+		<strong>v1.0.2</strong><br>
+		Add keyboard shortcuts to quickly open jsDelivr, npm, or GitHub page of the selected package.<br><br>
+
 		<strong>v1.0.1</strong><br>
 		Fix pasting into empty input.<br><br>
 
@@ -15,7 +18,7 @@
 		Initial release.
     ]]></change-notes>
 
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 
 	<vendor email="dak@prospectone.io" url="https://www.jsdelivr.com">jsDelivr</vendor>
 
