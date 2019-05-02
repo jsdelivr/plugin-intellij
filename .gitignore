@@ -3,3 +3,6 @@
 .local/
 build/
 gradle/
+out/
+local.properties
+plugin-intellij.iml

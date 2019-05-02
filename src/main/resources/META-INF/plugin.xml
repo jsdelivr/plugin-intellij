@@ -8,6 +8,9 @@
     ]]></description>
 
 	<change-notes><![CDATA[
+		<strong>v1.0.4</strong><br>
+		Fix handling of invalid semver versions.<br><br>
+
 		<strong>v1.0.3</strong><br>
 		Update IntelliJ platform to 2019.1.<br><br>
 
@@ -21,7 +24,7 @@
 		Initial release.
     ]]></change-notes>
 
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 
 	<vendor email="dak@prospectone.io" url="https://www.jsdelivr.com">jsDelivr</vendor>
 
