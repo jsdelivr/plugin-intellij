@@ -59,7 +59,11 @@ public class VersionInput extends JsDelivrInput {
 
 		for (String version : pkg.getVersions()) {
 			if (version.startsWith(text)) {
-				list.add(Version.valueOf(version));
+				try {
+					list.add(Version.valueOf(version));
+				} catch (Exception e) {
+					System.out.println("Unrecognized version " + version);
+				}
 			}
 		}
 
