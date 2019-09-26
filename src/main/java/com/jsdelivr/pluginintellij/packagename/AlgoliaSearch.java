@@ -1,10 +1,11 @@
 package com.jsdelivr.pluginintellij.packagename;
 
-import com.algolia.search.APIClient;
-import com.algolia.search.ApacheAPIClientBuilder;
-import com.algolia.search.Index;
-import com.algolia.search.objects.Query;
-import com.algolia.search.responses.SearchResult;
+import com.algolia.search.DefaultSearchClient;
+import com.algolia.search.SearchClient;
+import com.algolia.search.SearchConfig;
+import com.algolia.search.SearchIndex;
+import com.algolia.search.models.indexing.Query;
+import com.algolia.search.models.indexing.SearchResult;
 import com.jsdelivr.pluginintellij.packagename.remotetypes.AlgoliaPackage;
 
 import java.util.Collections;
@@ -15,12 +16,12 @@ public class AlgoliaSearch {
 	private static final String apiKey = "f54e21fa3a2a0160595bb058179bfb1e";
 	private static final String indexName = "npm-search";
 
-	private Index<AlgoliaPackage> index;
+	private SearchIndex<AlgoliaPackage> index;
 
 	public AlgoliaSearch() {
 		java.security.Security.setProperty("networkaddress.cache.ttl", "60");
-		ApacheAPIClientBuilder builder = new ApacheAPIClientBuilder(appId, apiKey);
-		APIClient client = builder.build();
+		SearchConfig config = new SearchConfig.Builder(appId, apiKey).build();
+		SearchClient client = DefaultSearchClient.create(config);
 		index = client.initIndex(indexName, AlgoliaPackage.class);
 	}
 
