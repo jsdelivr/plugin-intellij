@@ -8,6 +8,9 @@
     ]]></description>
 
 	<change-notes><![CDATA[
+		<strong>v1.0.6</strong><br>
+		Update IntelliJ platform to 2019.3.<br><br>
+
 		<strong>v1.0.5</strong><br>
 		Update IntelliJ platform to 2019.2.<br><br>
 
@@ -27,7 +30,7 @@
 		Initial release.
     ]]></change-notes>
 
-	<version>1.0.5</version>
+	<version>1.0.6</version>
 
 	<vendor email="dak@prospectone.io" url="https://www.jsdelivr.com">jsDelivr</vendor>
 
