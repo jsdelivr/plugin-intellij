@@ -1,0 +1,19 @@
+# Default ignored files
+/workspace.xml
+
+# Sensitive or high-churn files
+/uiDesigner.xml
+
+# Gradle
+/gradle.xml
+/libraries
+
+# Gradle and Maven with auto-import
+/artifacts
+/compiler.xml
+/jarRepositories.xml
+/modules.xml
+/*.iml
+/modules
+*.iml
+*.ipr
