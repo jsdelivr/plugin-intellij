@@ -4,10 +4,13 @@
 	<id>com.jsdelivr.pluginintellij.JsDelivrPackageSearch</id>
 
 	<description><![CDATA[
-    Simple search and insertion of packages from <a href="https://www.jsdelivr.com">https://www.jsdelivr.com</a>
-    ]]></description>
+	Simple search and insertion of packages from <a href="https://www.jsdelivr.com">https://www.jsdelivr.com</a>
+	]]></description>
 
 	<change-notes><![CDATA[
+		<strong>v1.0.7</strong><br>
+		Update IntelliJ platform to 2020.1, add plugin logo.<br><br>
+
 		<strong>v1.0.6</strong><br>
 		Update IntelliJ platform to 2019.3.<br><br>
 
@@ -28,9 +31,10 @@
 
 		<strong>v1.0.0</strong><br>
 		Initial release.
-    ]]></change-notes>
+	]]></change-notes>
 
-	<version>1.0.6</version>
+	<version>1.0.7</version>
+	<idea-version since-build="191.7141.44"/>
 
 	<vendor email="dak@prospectone.io" url="https://www.jsdelivr.com">jsDelivr</vendor>
 
@@ -38,23 +42,23 @@
 
 	<actions>
 		<action id="com.jsdelivr.pluginintellij.JsDelivrPackageSearch"
-				class="com.jsdelivr.pluginintellij.JsDelivrPackageSearch" text="Add jsDelivr package"
-				description="Choose and insert JsDelivr package">
+		        class="com.jsdelivr.pluginintellij.JsDelivrPackageSearch" text="Add jsDelivr package"
+		        description="Choose and insert JsDelivr package">
 			<add-to-group group-id="EditorPopupMenu3"/>
 			<keyboard-shortcut keymap="$default" first-keystroke="alt A"/>
 		</action>
 		<action id="com.jsdelivr.pluginintellij.actions.OpenJsDelivr"
-				class="com.jsdelivr.pluginintellij.actions.OpenJsDelivr" text="Open jsDelivr page"
-				description="Opens jsDelivr page of the selected package">
+		        class="com.jsdelivr.pluginintellij.actions.OpenJsDelivr" text="Open jsDelivr page"
+		        description="Opens jsDelivr page of the selected package">
 			<keyboard-shortcut keymap="$default" first-keystroke="F1"/>
 		</action>
 		<action id="com.jsdelivr.pluginintellij.actions.OpenNpm" class="com.jsdelivr.pluginintellij.actions.OpenNpm"
-				text="Open npm page" description="Open npm page of the selected package">
+		        text="Open npm page" description="Open npm page of the selected package">
 			<keyboard-shortcut keymap="$default" first-keystroke="F2"/>
 		</action>
 		<action id="com.jsdelivr.pluginintellij.actions.OpenGithub"
-				class="com.jsdelivr.pluginintellij.actions.OpenGithub" text="Open Github repository"
-				description="Open Github repository of the selected package">
+		        class="com.jsdelivr.pluginintellij.actions.OpenGithub" text="Open Github repository"
+		        description="Open Github repository of the selected package">
 			<keyboard-shortcut keymap="$default" first-keystroke="F3"/>
 		</action>
 	</actions>
