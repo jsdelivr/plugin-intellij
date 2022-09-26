@@ -8,6 +8,9 @@
 	]]></description>
 
 	<change-notes><![CDATA[
+		<strong>v1.0.8</strong><br>
+		Update dependencies.<br><br>
+
 		<strong>v1.0.7</strong><br>
 		Update IntelliJ platform to 2020.1, add plugin logo.<br><br>
 
@@ -34,7 +37,7 @@
 	]]></change-notes>
 
 	<version>1.0.7</version>
-	<idea-version since-build="191.7141.44"/>
+	<idea-version since-build="201"/>
 
 	<vendor email="dak@prospectone.io" url="https://www.jsdelivr.com">jsDelivr</vendor>
 
