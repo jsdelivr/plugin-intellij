@@ -37,7 +37,7 @@
 	]]></change-notes>
 
 	<version>1.0.7</version>
-	<idea-version since-build="201"/>
+	<idea-version since-build="222.3345.118"/>
 
 	<vendor email="dak@prospectone.io" url="https://www.jsdelivr.com">jsDelivr</vendor>
 

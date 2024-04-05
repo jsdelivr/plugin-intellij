@@ -1,25 +1,26 @@
 plugins {
 	id 'java'
-	id 'org.jetbrains.intellij' version '1.9.0'
+	id 'org.jetbrains.intellij' version '1.17.3'
 }
 
 version '1.0.8'
 
-sourceCompatibility = 1.8
+project.sourceCompatibility = JavaVersion.VERSION_17
+project.targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'com.algolia:algoliasearch-core:3.16.6'
-	implementation 'com.algolia:algoliasearch-apache:3.16.6'
+	implementation 'com.algolia:algoliasearch-core:3.16.9'
+	implementation 'com.algolia:algoliasearch-apache:3.16.9'
 	runtimeOnly 'com.github.cliftonlabs:json-simple:3.1.0'
 	implementation 'com.github.zafarkhaja:java-semver:0.9.0'
 	testImplementation group: 'junit', name: 'junit', version: '4.13.1'
 }
 
 intellij {
-	version = '2020.1'
+	version = '2022.2'
 	updateSinceUntilBuild = false
 }
