@@ -24,7 +24,12 @@ public class JsDelivrPackageSearch extends AnAction {
 
 	@Override
 	public void actionPerformed(AnActionEvent event) {
-		editor = event.getRequiredData(CommonDataKeys.EDITOR);
+		editor = event.getData(CommonDataKeys.EDITOR);
+
+		if (editor == null) {
+			return;
+		}
+
 		project = event.getProject();
 
 		Font editorFont = editor.getContentComponent().getFont();
