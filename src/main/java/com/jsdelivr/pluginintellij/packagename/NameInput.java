@@ -59,7 +59,7 @@ public class NameInput extends JsDelivrInput {
 		NameThread pkgNameThr = new NameThread(algoliaSearch, text, this, true);
 
 		if (thread != null) {
-			thread.stop();
+			thread.interrupt();
 		}
 
 		thread = new Thread(pkgNameThr);
@@ -135,7 +135,7 @@ public class NameInput extends JsDelivrInput {
 		} else {
 			Runtime runtime = Runtime.getRuntime();
 			try {
-				runtime.exec("xdg-open " + website);
+				runtime.exec(new String[]{"xdg-open", website});
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
