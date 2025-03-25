@@ -3,7 +3,7 @@ plugins {
 	id 'org.jetbrains.intellij' version '1.17.3'
 }
 
-version '1.0.9'
+version '1.0.10'
 
 project.sourceCompatibility = JavaVersion.VERSION_17
 project.targetCompatibility = JavaVersion.VERSION_17

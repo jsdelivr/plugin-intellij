@@ -8,6 +8,9 @@
 	]]></description>
 
 	<change-notes><![CDATA[
+		<strong>v1.0.10</strong><br>
+		Resolve deprecation warnings in latest IntelliJ versions.<br><br>
+
 		<strong>v1.0.9</strong><br>
 		Resolve deprecation warnings in IntelliJ 2024.1.<br><br>
 
